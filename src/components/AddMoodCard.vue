@@ -29,8 +29,6 @@
   
   export default {
     name: 'AddMoodCard',
-    data() {
-    },
     methods: {
       submitMood(mood) {
         const moodStore = useMoodStore();
