@@ -30,7 +30,7 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
+    border-radius: 60px;
     font-size: 15px;
     color: #161d1c;
     text-decoration: none;
