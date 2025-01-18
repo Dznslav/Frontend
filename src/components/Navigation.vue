@@ -3,7 +3,7 @@
     <router-link to="/" class="nav-link-main">Moodscape</router-link>
     <div class="nav-links-container">
         <router-link to="/dashboard" class="nav-link">Dashboard</router-link>
-        <router-link to="/addmood" class="nav-link">New record</router-link>
+        <router-link to="/addmood" class="nav-link">New Mood</router-link>
         <router-link to="/history" class="nav-link">History</router-link>
     </div>
   </nav>
