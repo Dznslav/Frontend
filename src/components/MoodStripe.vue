@@ -1,15 +1,17 @@
 <template>
-    <div class="moodcard">
-      <img :src="moodIconPath" alt="moodicon" class="moodicon" />
+  <div class="stripescontainer">
+    <div class="moodstripe">
+      <button @click="deleteMood" class="delete-btn">Delete</button>
       <h2>{{ mood }}</h2>
       <p class="mood-date">{{ formattedDate }}</p>
     </div>
+  </div>
   </template>
   
   <script>
-  
+  import { useMoodStore } from '../stores/moodStore';
   export default {
-    name: 'MoodCard',
+    name: 'MoodStripe',
     props: {
       mood: {
         type: String,
@@ -25,18 +27,6 @@
       },
     },
     computed: {
-      moodIconPath() {
-        switch (this.mood) {
-          case 'Good':
-            return '../good-emoji.png';
-          case 'Normal':
-            return '../normal-emoji.png';
-          case 'Bad':
-            return '../bad-emoji.png';
-          default:
-            return '';
-        }
-      },
       formattedDate() {
         const date = new Date(this.createdAt);
         return date.toLocaleString('en-US', {
@@ -47,35 +37,42 @@
         });
       },
     },
+    methods: {
+      deleteMood() {
+        const moodStore = useMoodStore();
+        moodStore.deleteMood(this.createdAt);
+      },
+    },
   };
   </script>
   
   <style scoped>
-  .moodcard {
+  .stripescontainer {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .moodstripe {
     border-radius: 25px;
-    width: 300px;
-    height: 400px;
+    width: 40%;
+    height: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
     background-color: #d5dbda;
     color: #006a65;
-    font-size: 20px;
+    font-size: 18px;
+    gap: 100px;
     
   }
   
-  .moodicon {
-    width: 60%;
-    height: 45%;
-    margin-top: 10px;
-  }
-  
   .mood-date {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #4a6360;
-    font-size: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+    color: #555;
   }
   .delete-btn {
     background-color: #4a6360;
@@ -86,10 +83,7 @@
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
-  }
-  .delete-btn:hover {
-    background-color: #2b423f;
-    transition: background-color 0.3s ease;
+    
   }
 
   </style>

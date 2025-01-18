@@ -1,6 +1,7 @@
+import Dashboard from '@/views/Dashboard.vue'
 import LandingPage from '@/views/LandingPage.vue'
-import Login from '@/views/Login.vue'
-import Register from '@/views/Register.vue'
+import MoodRecordPage from '@/views/MoodRecordPage.vue'
+import History from '@/views/History.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -12,14 +13,19 @@ const router = createRouter({
       component: LandingPage,
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login,
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard,
     },
     {
-      path: '/register',
-      name: 'Register',
-      component: Register,
+      path: '/addmood',
+      name: 'MoodRecordPage',
+      component: MoodRecordPage,
+    },
+    {
+      path: '/history',
+      name: 'History',
+      component: History,
     },
 
   ],
